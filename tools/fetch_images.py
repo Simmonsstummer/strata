@@ -14,7 +14,7 @@ import json, os, re, sys, time, html, urllib.parse, urllib.request
 HERE = os.path.dirname(os.path.abspath(__file__))
 ROOT = os.path.join(HERE, '..')
 sys.path.insert(0, HERE)
-from immagini import Q, BLOCK
+from immagini import Q, BLOCK, PIN
 
 API = 'https://commons.wikimedia.org/w/api.php'
 UA = 'StrataEducationalApp/1.0 (https://github.com/Simmonsstummer/strata)'
@@ -80,7 +80,7 @@ def main():
         if prev and prev['file'] not in BLOCK and os.path.exists(os.path.join(out_dir, prev['f'])):
             res[key] = prev; continue
         pick = None
-        for q in queries:
+        for q in ([PIN[key]] if key in PIN else []) + queries:
             for p in candidates(q):
                 pick = acceptable(p)
                 if pick: break

@@ -192,13 +192,13 @@ def main(ttl, out):
     ev = [{'id': x['id'], 'a': x['a'], 'e': x['e'], 'k': x['k'], 'n': bi(x['n']), 'txt': bi(x['txt']),
            'see': [{'n': bi((s[0], s[1])), 'u': s[2]} for s in x['see']], 'read': x['read'],
            'web': [{'l': w[0], 'u': w[1]} for w in x['web']], 'el': x['el']} for x in E]
-    from immagini import Q
+    from immagini import Q, BLOCK, PIN, NONE
     for k in Q:
         kind, ref = k.split(':', 1)
         ok = ref in units if kind in 'gu' else any(x['id'] == ref for x in E)
         if not ok:
             raise SystemExit('immagini.py: unknown key ' + k)
-    data = {'school': SCHOOL, 'version': version, 'countries': {k: {'it': v[0], 'en': v[1]} for k, v in COUNTRY.items()}, 'source': 'https://github.com/i-c-stratigraphy/chart', 'units': lst, 'events': ev}
+    data = {'photos': {'q': {k: v for k, v in Q.items() if k not in NONE}, 'pin': PIN, 'block': sorted(BLOCK)}, 'school': SCHOOL, 'version': version, 'countries': {k: {'it': v[0], 'en': v[1]} for k, v in COUNTRY.items()}, 'source': 'https://github.com/i-c-stratigraphy/chart', 'units': lst, 'events': ev}
     with open(out, 'w', encoding='utf-8') as f:
         json.dump(data, f, ensure_ascii=False, separators=(',', ':'))
     write_sources(lst, version, os.path.join(os.path.dirname(out), '..', 'SOURCES.md'))

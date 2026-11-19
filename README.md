@@ -39,7 +39,7 @@ Strata runs in the browser, on desktop and phone, with nothing to install and no
 - **Events** – 63 milestones of Earth's history on a lane next to the column: life (Cambrian explosion, first dinosaurs…), climate (Great Oxidation, Snowball Earth, PETM…), the mass extinctions and the story of plates, oceans and mountains (Rodinia, Panthalassa, Pangaea, the Tethys and the Ligurian-Piedmont ocean, the Caledonian, Variscan, Alpine and Himalayan orogenies, the birth of the Apennines and of the Tyrrhenian Sea, the Messinian crisis…). Tap one for a short story, **where to see it**, **books** and **online resources**, and links to the elements in [Elementa](https://simmonsstummer.github.io/elementa/).
 - **The school eras** – the 🎒 button adds, next to the official column, the division taught in Italian primary schools (Archaic, Primary, Secondary, Tertiary, Quaternary era), dashed, with a card explaining what each one matches today.
 - **Print and download** – the 🖨 button prints the whole chart on one A3 or A4 sheet in four panels, like the official ICS chart, or downloads it as a vector **SVG** for large prints; it can also print the open card.
-- **Photos** – rocks, outcrops, fossils and golden-spike sections from Wikimedia Commons, **only with free licences** (CC0, public domain, CC BY, CC BY-SA), always with author, licence and source under the photo. See «Photos» below.
+- **Photos** – rocks, outcrops, fossils and golden-spike sections shown straight from Wikimedia Commons, **only with free licences** (CC0, public domain, CC BY, CC BY-SA, checked live on Commons), always with licence, author and source under the photo. See «Photos» below.
 - **Works offline** – it can be installed on a phone or computer like an app (PWA) and then works without a connection.
 - **A card for every unit**
   - *Overview*: origin of the name, what was happening, why the unit starts where it does, where to see these rocks in Italy, events, subdivisions, neighbours, its date on the «Earth calendar» (4.567 billion years squeezed into one year), official colour and the changes of the latest chart version.
@@ -87,6 +87,7 @@ python tools/build.py path/to/chart.ttl
 | `map.js`, `world.js` | the golden-spike map and the world outline |
 | `games.js` | the four games |
 | `print.js` | printable chart (SVG) and card |
+| `photos.js` | photos from Wikimedia Commons with live licence check, review page `#foto` |
 | `sw.js`, `manifest.webmanifest`, `icons/` | offline use and installation (PWA) |
 | `main.js` | startup, views, search, language and theme |
 | `data/strata.json` | the generated data |
@@ -96,13 +97,9 @@ python tools/build.py path/to/chart.ttl
 
 ### Photos
 
-`tools/immagini.py` lists what to illustrate (golden-spike sections, the rocks of each period — Italy first — and the events). `tools/fetch_images.py` searches Wikimedia Commons, **accepts only CC0, public-domain, CC BY and CC BY-SA files with a named author**, downloads them into `img/` and writes author, licence and source into `data/images.json` and [`img/CREDITS.md`](img/CREDITS.md). Run it from the project folder (it needs internet, no extra packages):
+The photos are shown **straight from Wikimedia Commons**, with nothing copied into the repository. `tools/immagini.py` lists what to illustrate (golden-spike sections, the rocks of each period — Italy first — and the events) with a few Commons searches for each. For every candidate file the browser reads **licence and author from the Commons API** and shows the photo only if the licence is **CC0, public domain, CC BY or CC BY-SA** and the author is named; the file must also mention the subject in its title or description. Under each photo: licence, author, link to the Commons page and to the licence, and a «wrong photo?» link that opens an issue. If Commons does not answer, or a file has been moved or deleted, simply no photo is shown.
 
-```
-python tools/fetch_images.py
-```
-
-then check the photos and add any wrong or poor file to `BLOCK` in `tools/immagini.py` before running it again.
+To check the choices, open **`#foto`** (e.g. https://simmonsstummer.github.io/strata/#foto): for every subject it shows the free candidates; pick the right one or «none», press «Copy choices» and paste the result into `PIN` and `NONE` in `tools/immagini.py`, then run `tools/build.py`. Optionally `python tools/fetch_images.py` downloads local copies into `img/`, which are then used instead.
 
 ### Sources
 
@@ -145,7 +142,7 @@ Full details in [`CREDITS.md`](CREDITS.md).
 - **Eventi** – 63 tappe della storia della Terra in una corsia accanto alla colonna: la vita (esplosione cambriana, primi dinosauri…), il clima (Grande Ossidazione, Terra a palla di neve, PETM…), le estinzioni di massa e la storia di placche, oceani e montagne (Rodinia, Panthalassa, Pangea, la Tetide e l'oceano ligure-piemontese, le orogenesi caledoniana, varisica, alpina e himalayana, la nascita dell'Appennino e del Tirreno, la crisi messiniana…). Toccandone uno si apre un breve racconto con **dove vederlo**, **libri** e **risorse online**, e i collegamenti agli elementi in [Elementa](https://simmonsstummer.github.io/elementa/).
 - **Le ere della scuola** – il pulsante 🎒 affianca alla colonna ufficiale la divisione che si studia alle elementari (Era Arcaica, Primaria, Secondaria, Terziaria, Quaternaria), tratteggiata, con una scheda che spiega a cosa corrisponde oggi ciascuna.
 - **Stampa e download** – il pulsante 🖨 stampa tutta la carta su un foglio A3 o A4 in quattro pannelli, come la carta ufficiale ICS, oppure la scarica in **SVG** vettoriale per stamparla in grande; può stampare anche la scheda aperta.
-- **Foto** – rocce, affioramenti, fossili e sezioni dei chiodi d'oro da Wikimedia Commons, **solo con licenze libere** (CC0, pubblico dominio, CC BY, CC BY-SA), sempre con autore, licenza e fonte sotto la foto. Vedi «Foto» più sotto.
+- **Foto** – rocce, affioramenti, fossili e sezioni dei chiodi d'oro mostrati direttamente da Wikimedia Commons, **solo con licenze libere** (CC0, pubblico dominio, CC BY, CC BY-SA, verificate in tempo reale su Commons), sempre con licenza, autore e fonte sotto la foto. Vedi «Foto» più sotto.
 - **Funziona offline** – si può installare sul telefono o sul computer come un'app (PWA) e poi funziona anche senza connessione.
 - **Una scheda per ogni unità**
   - *Panoramica*: origine del nome, cosa succedeva, perché l'unità inizia proprio lì, dove vedere queste rocce in Italia, eventi, suddivisioni, unità vicine, la sua data sul «calendario della Terra» (4,567 miliardi di anni compressi in un anno), colore ufficiale e modifiche dell'ultima versione della carta.
@@ -193,6 +190,7 @@ python tools/build.py percorso/di/chart.ttl
 | `map.js`, `world.js` | la mappa dei chiodi d'oro e il contorno del mondo |
 | `games.js` | i quattro giochi |
 | `print.js` | carta stampabile (SVG) e stampa della scheda |
+| `photos.js` | foto da Wikimedia Commons con verifica della licenza, pagina di revisione `#foto` |
 | `sw.js`, `manifest.webmanifest`, `icons/` | uso offline e installazione (PWA) |
 | `main.js` | avvio, viste, ricerca, lingua e tema |
 | `data/strata.json` | i dati generati |
@@ -202,13 +200,9 @@ python tools/build.py percorso/di/chart.ttl
 
 ### Foto
 
-`tools/immagini.py` elenca cosa illustrare (le sezioni dei chiodi d'oro, le rocce di ogni periodo — prima quelle italiane — e gli eventi). `tools/fetch_images.py` cerca su Wikimedia Commons, **accetta solo file CC0, di pubblico dominio, CC BY e CC BY-SA con un autore indicato**, li scarica in `img/` e scrive autore, licenza e fonte in `data/images.json` e in [`img/CREDITS.md`](img/CREDITS.md). Si lancia dalla cartella del progetto (serve internet, nessun pacchetto in più):
+Le foto sono mostrate **direttamente da Wikimedia Commons**, senza copiarle nel repository. `tools/immagini.py` elenca cosa illustrare (le sezioni dei chiodi d'oro, le rocce di ogni periodo — prima quelle italiane — e gli eventi) con alcune ricerche su Commons per ciascuno. Per ogni file candidato il browser legge **licenza e autore dall'API di Commons** e mostra la foto solo se la licenza è **CC0, pubblico dominio, CC BY o CC BY-SA** e l'autore è indicato; il file deve anche nominare il soggetto nel titolo o nella descrizione. Sotto ogni foto: licenza, autore, link alla pagina di Commons e alla licenza, e un link «foto sbagliata?» che apre una issue. Se Commons non risponde, o un file è stato spostato o cancellato, semplicemente non compare nessuna foto.
 
-```
-python tools/fetch_images.py
-```
-
-poi si controllano le foto e si aggiungono a `BLOCK` in `tools/immagini.py` quelle sbagliate o brutte, e si rilancia.
+Per controllare le scelte apri **`#foto`** (per esempio https://simmonsstummer.github.io/strata/#foto): per ogni soggetto mostra le foto libere candidate; scegli quella giusta o «nessuna», premi «Copia le scelte» e incolla il risultato in `PIN` e `NONE` in `tools/immagini.py`, poi lancia `tools/build.py`. Facoltativo: `python tools/fetch_images.py` scarica copie locali in `img/`, che vengono usate al posto dei link.
 
 ### Fonti
 

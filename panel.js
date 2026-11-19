@@ -28,13 +28,15 @@ App.panel = (() => {
     links();
   }
   function links() {
+    App.photos.fill(body);
     $$('[data-go]', body).forEach(b => b.onclick = () => App.select(App.by[b.dataset.go], true));
     $$('[data-ev]', body).forEach(b => b.onclick = () => App.openEvent(App.ev.find(e => e.id === b.dataset.ev)));
   }
 
-  function photo(key) {
-    const p = App.img && App.img[key]; if (!p) return '';
-    return `<figure class="photo"><img src="img/${p.f}" loading="lazy" alt="${esc(p.d || '')}" width="${p.w}" height="${p.h}"><figcaption>${t('photo.by')} ${esc(p.a)} · <a href="${esc(p.lu)}" target="_blank" rel="noopener">${esc(p.l)}</a> · <a href="${esc(p.p)}" target="_blank" rel="noopener">Wikimedia Commons</a></figcaption></figure>`;
+  function photo(key) {         // a local copy (img/) if there is one, otherwise a placeholder filled from Wikimedia Commons
+    const p = App.img && App.img[key];
+    if (!p) return `<figure class="photo" data-ph="${key}"></figure>`;
+    return `<figure class="photo ready"><img src="img/${p.f}" loading="lazy" alt="${esc(p.d || '')}" width="${p.w}" height="${p.h}"><figcaption><span class="lic">${esc(p.l)}</span> ${t('photo.by')} ${esc(p.a)} · <a href="${esc(p.p)}" target="_blank" rel="noopener">${t('photo.source')}</a> · <a href="${esc(p.lu)}" target="_blank" rel="noopener">${t('photo.license')}</a></figcaption></figure>`;
   }
   const yrOf = g => typeof g.yr === 'object' ? tx(g.yr) : g.yr;
   const kidBtn = (x, extra = '') => `<button class="kid" data-go="${x.id}" style="--c:${x.c}"><i></i><span>${esc(nm(x))}</span><small>${extra || fmtAge(x.a, true) + ' – ' + fmtAge(x.b, true)}</small></button>`;

@@ -12,7 +12,7 @@
   let data;
   try { data = await (await fetch('data/strata.json')).json(); }
   catch (err) { document.body.insertAdjacentHTML('beforeend', `<p style="position:fixed;inset:45% 0 auto;text-align:center;padding:0 20px">${t('err.data')}</p>`); return; }
-  indexData(data); App.countries = data.countries; App.school = data.school;
+  indexData(data); App.countries = data.countries; App.school = data.school; App.photoCfg = data.photos;
   App.img = {}; fetch('data/images.json').then(r => r.ok ? r.json() : {}).then(j => { App.img = j || {}; App.panel.rerender(); }).catch(() => { });
   if ('serviceWorker' in navigator && location.protocol === 'https:') navigator.serviceWorker.register('sw.js').catch(() => { });
 
@@ -115,6 +115,7 @@
   const byLower = {}; App.U.forEach(u => byLower[u.id.toLowerCase()] = u);
   const fromHash = () => {
     const s = decodeURIComponent(location.hash.slice(1)).toLowerCase(), u = byLower[s], ev = App.ev.find(e => e.id === s);
+    if (s === 'foto' || s === 'photos') { App.game.stopAll(); App.panel.close(); App.setView('play'); App.photos.review($('#play-root')); return; }
     if (ev && !u) { App.setView('column'); setTimeout(() => App.openEvent(ev), 60); }
     else if (u) { App.setView('column'); setTimeout(() => App.select(u, true), 60); }
     else if (VIEWS[s]) { App.setView(VIEWS[s]); if (VIEWS[s] === 'play') App.game.hub(); }

@@ -1,7 +1,7 @@
 /* Strata — service worker: works offline after the first visit */
-const V = 'strata-v2';
+const V = 'strata-v3';
 const CORE = ['./', 'index.html', 'style.css', 'core.js', 'i18n.js', 'world.js', 'column.js', 'panel.js', 'map.js', 'games.js',
-  'print.js', 'main.js', 'data/strata.json', 'data/images.json', 'manifest.webmanifest', 'icons/icon-192.png'];
+  'print.js', 'photos.js', 'main.js', 'data/strata.json', 'data/images.json', 'manifest.webmanifest', 'icons/icon-192.png'];
 self.addEventListener('install', e => e.waitUntil(caches.open(V).then(c => c.addAll(CORE)).then(() => self.skipWaiting())));
 self.addEventListener('activate', e => e.waitUntil(caches.keys().then(ks => Promise.all(ks.filter(k => k !== V).map(k => caches.delete(k)))).then(() => self.clients.claim())));
 // same-origin files and fonts: answer from the cache at once, refresh it in the background

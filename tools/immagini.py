@@ -7,8 +7,10 @@
 # Keys:  g:<UnitId>  photo of the golden-spike section (shown in the «Boundary» tab)
 #        u:<UnitId>  photo for the unit card (rocks of that age, best if in Italy)
 #        e:<event>   photo for an event card (event ids are in tools/eventi.py)
-# Each subject is a list of Commons searches tried in order, or a 'File:...' title to pin one file.
-# BLOCK lists files that were found but are wrong or poor: they are never used.
+# Each subject is a list of Commons searches tried in order.
+# The app shows the photos straight from Wikimedia Commons (no copy in the repo): it reads the licence
+# of every file from the Commons API and shows the photo only if the licence is free and the author is named.
+# tools/fetch_images.py can also download local copies into img/ (optional).
 
 Q = {
     # ---------------------------------------------------------------- golden-spike sections
@@ -128,4 +130,6 @@ Q = {
     'e:rodinia':     ['Rodinia map'],
 }
 
-BLOCK = set()   # 'File:…' titles that turned out wrong or poor
+BLOCK = set()   # 'File:…' titles that turned out wrong or poor: never used
+PIN = {}        # key -> 'File:…' chosen by hand (for example with the review page, #foto): always used first
+NONE = set()    # keys for which no suitable free photo exists: nothing is shown

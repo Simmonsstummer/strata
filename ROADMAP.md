@@ -4,8 +4,8 @@ What is planned or still to do. / Cosa è in programma o ancora da fare.
 
 ## Da fare subito / Next
 
-- [ ] **Scaricare le foto** – lanciare `python tools/fetch_images.py` su un computer con internet (dalla sessione in cui è stata costruita Strata Wikimedia Commons non era raggiungibile), poi **controllare le foto una per una**: quelle sbagliate o brutte vanno in `BLOCK` in `tools/immagini.py` e si rilancia lo script. Facoltativo: un workflow di GitHub Actions che lo fa da solo a ogni modifica dell'elenco.
-  *Download the photos with `python tools/fetch_images.py`, review them and block the wrong ones; optionally automate it with GitHub Actions.*
+- [ ] **Rivedere le foto** – le foto arrivano direttamente da Wikimedia Commons, solo con licenza libera verificata in tempo reale. Lo script le sceglie con ricerche per parole chiave: conviene aprire la pagina **`#foto`**, scegliere la foto giusta per ogni soggetto (o «nessuna») e incollare le scelte in `tools/immagini.py`.
+  *Review the photos on the `#foto` page and pin the right ones.*
 - [x] **Link da Elementa a Strata** – fatto: le schede di uranio, piombo, zirconio, iridio, ferro, ossigeno, carbonio, calcio, magnesio, sodio, cloro, zolfo, potassio e argon aprono la scheda corrispondente di Strata.
 - [ ] **Revisione geologica dei testi** – soprattutto le descrizioni delle rocce delle sezioni (`tools/testi_piani.py`), i marcatori dei piani senza GSSP, le indicazioni «Andarci» (`tools/visite.py`) e i nuovi eventi tettonici (`tools/eventi.py`).
   *Expert review of the texts.*

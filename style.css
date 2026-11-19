@@ -312,3 +312,15 @@ main{position:fixed;inset:var(--top) 0 var(--foot) 0}
   body.printing-card .card,body.printing-card .kv div{background:#fff;border-color:#ccc;break-inside:avoid}
   html,body{overflow:visible!important;height:auto!important;-webkit-print-color-adjust:exact;print-color-adjust:exact}
 }
+
+.photo:not(.ready){display:none}
+.photo .lic{display:inline-block;font:700 10.5px var(--mono);padding:1px 6px;border-radius:5px;background:color-mix(in srgb,var(--good) 18%,transparent);color:var(--text);border:1px solid color-mix(in srgb,var(--good) 45%,transparent);margin-right:2px}
+/* photo review page (#foto) */
+.rev{margin:0 0 26px}
+.rev h3{margin:0 0 8px;font-size:15px}
+.rev h3 small{font-weight:500;font-size:12px}
+.rev-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:10px;align-items:start}
+.rev-grid .photo{display:block;margin:0}
+.rev-grid .photo img{height:160px;object-fit:cover}
+.rev-grid .photo .btn{margin:0 8px 8px}
+.rev-grid .on{outline:3px solid var(--accent);outline-offset:2px}
