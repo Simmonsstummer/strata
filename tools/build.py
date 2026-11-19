@@ -13,6 +13,7 @@ sys.path.insert(0, os.path.dirname(__file__))
 from testi_unita import U
 from testi_piani import S
 from eventi import E
+from visite import V
 
 GTS = rdflib.Namespace('http://resource.geosciml.org/ontology/timescale/gts#')
 GTSD = rdflib.Namespace('https://data.stratigraphy.org/data/gts/')
@@ -46,6 +47,30 @@ CC = dict(Archean='ca', Ediacaran='au', Pridoli='cz', Fortunian='ca', Wuliuan='c
 #  - Ludlow ends where the Pridoli begins (422.7 Ma), not at the top of the Silurian (419.62 Ma);
 #  - the Aquitanian begins at the base of the Miocene/Neogene and the top of the Chattian (23.04 Ma), not 23.03 Ma.
 FIXES = {('Ludlow', 'b'): 422.7, ('Ludlow', 'be'): 1.6, ('Aquitanian', 'a'): 23.04}
+
+# the old school division (Giovanni Arduino, 1759, and its later additions), shown on request next to the official one
+SCHOOL = [
+    {'id': 'sQ', 'a': 2.58, 'b': 0, 'c': '#F9F97F', 'u': ['Quaternary'],
+     'n': {'it': 'Era Quaternaria', 'en': 'Quaternary era'},
+     'txt': {'it': "È l'unico nome della vecchia serie rimasto ufficiale: oggi il Quaternario è un periodo del Cenozoico. A scuola a volte si chiama anche Era Neozoica.",
+             'en': "It is the only name of the old series that is still official: today the Quaternary is a period of the Cenozoic. Some school books also call it the Neozoic."}},
+    {'id': 'sT', 'a': 66.0, 'b': 2.58, 'c': '#FDD03E', 'u': ['Paleogene', 'Neogene'],
+     'n': {'it': 'Era Terziaria', 'en': 'Tertiary era'},
+     'txt': {'it': "Corrisponde al Paleogene più il Neogene. Il «Terziario» non è più un'unità ufficiale dal 2004, ma il nome si usa ancora molto. Insieme al Quaternario forma il Cenozoico.",
+             'en': "It matches the Paleogene plus the Neogene. The «Tertiary» has not been an official unit since 2004, but the name is still widely used. Together with the Quaternary it makes up the Cenozoic."}},
+    {'id': 'sS', 'a': 251.902, 'b': 66.0, 'c': '#67C5CA', 'u': ['Mesozoic'],
+     'n': {'it': 'Era Secondaria', 'en': 'Secondary era'},
+     'txt': {'it': "È il Mesozoico: Triassico, Giurassico e Cretacico, l'era dei dinosauri.",
+             'en': "It is the Mesozoic: Triassic, Jurassic and Cretaceous, the age of dinosaurs."}},
+    {'id': 'sP', 'a': 538.8, 'b': 251.902, 'c': '#99C08D', 'u': ['Paleozoic'],
+     'n': {'it': 'Era Primaria', 'en': 'Primary era'},
+     'txt': {'it': "È il Paleozoico, dal Cambriano al Permiano: trilobiti, primi pesci, prime piante e primi animali sulla terraferma.",
+             'en': "It is the Paleozoic, from the Cambrian to the Permian: trilobites, the first fishes, the first plants and animals on land."}},
+    {'id': 'sA', 'a': 4567.0, 'b': 538.8, 'c': '#F74370', 'u': ['Precambrian'],
+     'n': {'it': 'Era Arcaica', 'en': 'Archaic era'},
+     'txt': {'it': "Detta anche Archeozoica (e, per la parte più antica, Azoica, «senza vita»). È tutto il Precambriano, che oggi si divide in Adeano, Archeano e Proterozoico: quasi nove decimi della storia della Terra.",
+             'en': "Also called Archeozoic (and, for its oldest part, Azoic, «without life»). It is the whole Precambrian, today split into Hadean, Archean and Proterozoic: almost nine tenths of Earth's history."}},
+]
 
 RANK = {'Super-Eon': 'S', 'Eon': 'E', 'Era': 'R', 'Period': 'P', 'Sub-Period': 'B', 'Epoch': 'C', 'Age': 'A'}
 ORDER = 'SERPBCA'
@@ -143,6 +168,8 @@ def main(ttl, out):
             for k, v in t['g'].items():
                 gg[k] = {'it': v[0], 'en': v[1]} if isinstance(v, tuple) else v
             d['g'] = gg
+    for id, (i, e) in V.items():
+        units[id]['g']['vis'] = {'it': i, 'en': e}
     for d in units.values():
         g = d.get('g')
         if g and g.get('lat') is not None:
@@ -161,8 +188,17 @@ def main(ttl, out):
         raise SystemExit('units without the origin of the name: ' + ', '.join(noety))
 
     lst = sorted(units.values(), key=lambda d: (ORDER.index(d['r']), -d['a']))
-    ev = [{'a': a, 'e': e, 'n': {'it': i, 'en': en}, 'k': k} for a, e, i, en, k in E]
-    data = {'version': version, 'countries': {k: {'it': v[0], 'en': v[1]} for k, v in COUNTRY.items()}, 'source': 'https://github.com/i-c-stratigraphy/chart', 'units': lst, 'events': ev}
+    bi = lambda t: {'it': t[0], 'en': t[1]}
+    ev = [{'id': x['id'], 'a': x['a'], 'e': x['e'], 'k': x['k'], 'n': bi(x['n']), 'txt': bi(x['txt']),
+           'see': [{'n': bi((s[0], s[1])), 'u': s[2]} for s in x['see']], 'read': x['read'],
+           'web': [{'l': w[0], 'u': w[1]} for w in x['web']], 'el': x['el']} for x in E]
+    from immagini import Q
+    for k in Q:
+        kind, ref = k.split(':', 1)
+        ok = ref in units if kind in 'gu' else any(x['id'] == ref for x in E)
+        if not ok:
+            raise SystemExit('immagini.py: unknown key ' + k)
+    data = {'school': SCHOOL, 'version': version, 'countries': {k: {'it': v[0], 'en': v[1]} for k, v in COUNTRY.items()}, 'source': 'https://github.com/i-c-stratigraphy/chart', 'units': lst, 'events': ev}
     with open(out, 'w', encoding='utf-8') as f:
         json.dump(data, f, ensure_ascii=False, separators=(',', ':'))
     write_sources(lst, version, os.path.join(os.path.dirname(out), '..', 'SOURCES.md'))
@@ -199,6 +235,16 @@ Questo file è generato da `tools/build.py` a partire dagli stessi dati usati da
         if not g:
             continue
         L.append(f"| {d['n']['en']} / {d['n']['it']} | {ST[g['st']]} | {g['loc']['en']} | {g['yr']['en'] if isinstance(g.get('yr'), dict) else g.get('yr', '—')} | {g.get('ref', '—')} |\n")
+    L.append('\n## Events: further reading and links / Eventi: letture e link\n\n')
+    for x in sorted(E, key=lambda x: -x['a']):
+        L.append(f"**{x['n'][1]}** ({x['a']} Ma)\n")
+        for r in x['read']:
+            L.append(f"- {r}\n")
+        for w in x['web']:
+            L.append(f"- [{w[0]}]({w[1]})\n")
+        for p in x['see']:
+            L.append(f"- {p[1]}: {p[2]}\n")
+        L.append('\n')
     L.append("""
 ## Map / Mappa
 

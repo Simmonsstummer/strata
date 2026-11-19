@@ -280,3 +280,35 @@ main{position:fixed;inset:var(--top) 0 var(--foot) 0}
   .foot .short{display:inline}
 }
 @media (max-width:480px){ .brand-name{display:none} .top .icon-btn{width:34px;height:34px;font-size:15px} .view-btn{padding:6px 10px} }
+
+/* ---------- photos, events, resources ---------- */
+.photo{margin:12px 0;border-radius:14px;overflow:hidden;border:1px solid var(--line);background:var(--surface2)}
+.photo img{display:block;width:100%;height:auto;max-height:300px;object-fit:cover}
+.photo figcaption{font-size:11px;line-height:1.4;color:var(--muted);padding:7px 10px}
+.photo figcaption a{color:var(--muted)}
+.hero-ev{width:84px;height:84px;border-radius:16px;flex:none;display:grid;place-items:center;font-size:46px;background:var(--surface2);border:1px solid var(--line)}
+.res{margin:0;padding-left:18px;font-size:14px;line-height:1.5}
+.res li{margin:3px 0}
+.res a{color:var(--accent);text-decoration:none;border-bottom:1px solid color-mix(in srgb,var(--accent) 40%,transparent)}
+.el-chip{display:inline-grid;place-items:center;min-width:38px;height:38px;padding:0 8px;border-radius:9px;font-weight:800;font-size:16px;text-decoration:none;color:#1a1408;background:#ffc53d}
+.evlist li[data-ev]{cursor:pointer}
+.evlist li[data-ev]:hover span{color:var(--accent)}
+.pop{position:fixed;z-index:50;display:flex;flex-direction:column;gap:4px;min-width:220px;background:var(--surface);border:1px solid var(--line);border-radius:14px;box-shadow:var(--shadow);padding:10px}
+.pop b{font-size:11px;text-transform:uppercase;letter-spacing:.08em;color:var(--muted);margin:0 4px 4px}
+.pop button{text-align:left;border:0;background:transparent;padding:8px 10px;border-radius:9px;cursor:pointer;font-size:13.5px;font-weight:600}
+.pop button:hover{background:var(--surface2)}
+.pop small{font-size:11px;color:var(--muted);margin:4px 4px 0;line-height:1.4}
+#print-root{display:none}
+@media print{
+  body.printing-chart>*:not(#print-root){display:none!important}
+  body.printing-chart #print-root{display:block}
+  body.printing-chart #print-root svg{width:100%;height:auto;display:block}
+  body.printing-card{background:#fff;color:#111;--text:#111;--muted:#555;--faint:#888;--surface:#fff;--surface2:#fff;--line:#ccc;--line2:#bbb;--accent:#8a5a00}
+  body.printing-card>*:not(main){display:none!important}
+  body.printing-card main>*:not(#panel){display:none!important}
+  body.printing-card main,body.printing-card #panel{position:static!important;transform:none!important;box-shadow:none;border:0;width:auto;height:auto;inset:auto}
+  body.printing-card .panel-tabs,body.printing-card .panel-grip,body.printing-card #panel-close,body.printing-card .btns{display:none!important}
+  body.printing-card .panel-body{overflow:visible}
+  body.printing-card .card,body.printing-card .kv div{background:#fff;border-color:#ccc;break-inside:avoid}
+  html,body{overflow:visible!important;height:auto!important;-webkit-print-color-adjust:exact;print-color-adjust:exact}
+}

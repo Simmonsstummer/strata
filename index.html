@@ -18,6 +18,8 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="style.css">
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="apple-touch-icon" href="icons/icon-192.png">
 </head>
 <body>
 <header class="top">
@@ -50,7 +52,9 @@
           <button data-names="rock" data-i18n="names.rock"></button>
           <button data-names="time" data-i18n="names.time"></button>
         </div>
+        <button id="school-btn" class="icon-btn small" data-i18n-title="school.toggle">🎒</button>
         <button id="events-btn" class="icon-btn small" data-i18n-title="events.toggle">✦</button>
+        <button id="print-btn" class="icon-btn small" data-i18n-title="print.menu">🖨</button>
         <button id="help-btn" class="icon-btn small help-btn" data-i18n-title="help.toggle">?</button>
       </div>
     </div>
@@ -109,6 +113,7 @@
 <script src="panel.js"></script>
 <script src="map.js"></script>
 <script src="games.js"></script>
+<script src="print.js"></script>
 <script src="main.js"></script>
 </body>
 </html>

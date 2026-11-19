@@ -6,13 +6,15 @@
   $('#theme-btn').onclick = () => { const th = document.documentElement.dataset.theme === 'dark' ? 'light' : 'dark'; document.documentElement.dataset.theme = th; store.set('theme', th); App.col.redraw(); };
 
   App.lang = store.get('lang', /^it\b/i.test(navigator.language || '') ? 'it' : 'en');
-  App.names = store.get('names', 'rock'); App.scale = store.get('scale', 'chart'); App.showEvents = store.get('events', true);
+  App.names = store.get('names', 'rock'); App.showSchool = store.get('school', false); App.scale = store.get('scale', 'chart'); App.showEvents = store.get('events', true);
   applyStatic();
 
   let data;
   try { data = await (await fetch('data/strata.json')).json(); }
   catch (err) { document.body.insertAdjacentHTML('beforeend', `<p style="position:fixed;inset:45% 0 auto;text-align:center;padding:0 20px">${t('err.data')}</p>`); return; }
-  indexData(data); App.countries = data.countries;
+  indexData(data); App.countries = data.countries; App.school = data.school;
+  App.img = {}; fetch('data/images.json').then(r => r.ok ? r.json() : {}).then(j => { App.img = j || {}; App.panel.rerender(); }).catch(() => { });
+  if ('serviceWorker' in navigator && location.protocol === 'https:') navigator.serviceWorker.register('sw.js').catch(() => { });
 
   App.view = 'column';
   App.setView = v => {
@@ -25,6 +27,8 @@
   $$('.view-btn').forEach(b => b.onclick = () => { App.game.stopAll(); App.setView(b.dataset.view); if (b.dataset.view === 'play') App.game.hub(); });
 
   /* select a unit: highlight it in the column and open its card */
+  App.openEvent = e => { if (!e) return; App.panel.openEvent(e); try { history.replaceState(null, '', '#' + e.id); } catch (x) { } };
+  App.openSchool = x => { App.col.select(x); App.panel.openSchool(x); };
   App.select = (u, fly, tab) => {
     if (!u) return;
     if (App.view === 'play') App.setView('column');
@@ -33,6 +37,7 @@
     try { history.replaceState(null, '', '#' + u.id.toLowerCase()); } catch (e) { }
   };
 
+  App.updateSide = () => App.col.setSide($('#panel').classList.contains('open') ? 460 : !$('#helper').hidden ? 400 : 0);
   App.col.init(); App.panel.init(); App.map.init(); App.game.hub();
 
   /* dock: scale, names, events, help */
@@ -40,14 +45,17 @@
     $$('#scale-seg button').forEach(b => b.classList.toggle('active', b.dataset.scale === App.scale));
     $$('#names-seg button').forEach(b => b.classList.toggle('active', b.dataset.names === App.names));
     $('#events-btn').classList.toggle('on', App.showEvents);
+    $('#school-btn').classList.toggle('on', App.showSchool);
   };
+  $('#school-btn').onclick = () => { App.showSchool = !App.showSchool; store.set('school', App.showSchool); segs(); App.col.layout(); if (App.showSchool) toast(t('school.toast'), 3200); };
+  $('#print-btn').onclick = e => App.print.menu(e.currentTarget);
   $$('#scale-seg button').forEach(b => b.onclick = () => { App.col.setScale(b.dataset.scale); store.set('scale', App.scale); segs(); toast(t('scale.toast.' + App.scale), 2600); });
   $$('#names-seg button').forEach(b => b.onclick = () => { App.names = b.dataset.names; store.set('names', App.names); segs(); App.col.redraw(); App.panel.rerender(); App.map.relang(); helper(); });
   $('#events-btn').onclick = () => { App.showEvents = !App.showEvents; store.set('events', App.showEvents); segs(); App.col.redraw(); };
   segs();
   let helpOn = store.get('help', true);
   function helper() {
-    const el = $('#helper'); $('#help-btn').classList.toggle('on', helpOn); el.hidden = !helpOn; if (!helpOn) return;
+    const el = $('#helper'); $('#help-btn').classList.toggle('on', helpOn); el.hidden = !helpOn; App.updateSide(); if (!helpOn) return;
     const R = t('rank.rock'), T = t('rank.time');
     el.innerHTML = `<div class="hp-head"><span class="hp-lab">${t('help.lab')}</span><button class="icon-btn small" id="hp-x">✕</button></div>
       <h3>${t('help.title')}</h3><p>${t('help.p1')}</p><p>${t('help.p2')}</p>
@@ -106,8 +114,9 @@
   const VIEWS = { colonna: 'column', column: 'column', mappa: 'map', map: 'map', gioca: 'play', play: 'play' };
   const byLower = {}; App.U.forEach(u => byLower[u.id.toLowerCase()] = u);
   const fromHash = () => {
-    const s = decodeURIComponent(location.hash.slice(1)).toLowerCase(), u = byLower[s];
-    if (u) { App.setView('column'); setTimeout(() => App.select(u, true), 60); }
+    const s = decodeURIComponent(location.hash.slice(1)).toLowerCase(), u = byLower[s], ev = App.ev.find(e => e.id === s);
+    if (ev && !u) { App.setView('column'); setTimeout(() => App.openEvent(ev), 60); }
+    else if (u) { App.setView('column'); setTimeout(() => App.select(u, true), 60); }
     else if (VIEWS[s]) { App.setView(VIEWS[s]); if (VIEWS[s] === 'play') App.game.hub(); }
   };
   addEventListener('hashchange', fromHash); fromHash();

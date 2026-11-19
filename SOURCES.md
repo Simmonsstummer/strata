@@ -125,6 +125,303 @@ Questo file è generato da `tools/build.py` a partire dagli stessi dati usati da
 | Archean / Archeano | GSSA | Acasta Gneiss, Acasta River, Northwest Territories (Canada) | 2023 | Episodes |
 | Hadean / Adeano | GSSA | Defined by an age (GSSA), not a place: measured in the Allende and Gujba meteorites | 2022 | Episodes 2024; 47(2): 381-389 |
 
+## Events: further reading and links / Eventi: letture e link
+
+**Earth forms** (4567 Ma)
+- Robert M. Hazen, The Story of Earth (2012)
+- [Wikipedia: History of Earth](https://en.wikipedia.org/wiki/History_of_Earth)
+- [Wikipedia: Formation of the Solar System](https://en.wikipedia.org/wiki/Formation_and_evolution_of_the_Solar_System)
+- Pieces of the Allende meteorite in many natural history museums: https://en.wikipedia.org/wiki/Allende_meteorite
+
+**A giant impact forms the Moon** (4510 Ma)
+- Erik Asphaug, When the Earth Had Two Moons (2019)
+- [Wikipedia: Giant-impact hypothesis](https://en.wikipedia.org/wiki/Giant-impact_hypothesis)
+
+**The oldest crystal (Jack Hills zircon)** (4404 Ma)
+- [Wikipedia: Jack Hills](https://en.wikipedia.org/wiki/Jack_Hills)
+- [Wikipedia: Zircon](https://en.wikipedia.org/wiki/Zircon)
+
+**The oldest rock (Acasta gneiss)** (4031 Ma)
+- [Wikipedia: Acasta Gneiss](https://en.wikipedia.org/wiki/Acasta_Gneiss)
+- A block of Acasta gneiss is on show at the Canadian Museum of Nature (Ottawa): https://en.wikipedia.org/wiki/Canadian_Museum_of_Nature
+
+**The first certain stromatolites** (3480 Ma)
+- Andrew H. Knoll, Life on a Young Planet (2003)
+- J. William Schopf, Cradle of Life (1999)
+- [Wikipedia: Stromatolite](https://it.wikipedia.org/wiki/Stromatolite)
+- [PBS Eons (YouTube)](https://www.youtube.com/@eons)
+- Living stromatolites at Hamelin Pool, Shark Bay (Australia): https://en.wikipedia.org/wiki/Hamelin_Pool_Marine_Nature_Reserve
+
+**Great Oxidation: oxygen arrives** (2430 Ma)
+- Nick Lane, Oxygen: The Molecule that Made the World (2002)
+- Paul G. Falkowski, Life's Engines (2015)
+- [Wikipedia: Great Oxidation Event](https://en.wikipedia.org/wiki/Great_Oxidation_Event)
+- [Wikipedia: Banded iron formation](https://en.wikipedia.org/wiki/Banded_iron_formation)
+- The banded iron formations of Karijini National Park (Australia): https://en.wikipedia.org/wiki/Karijini_National_Park
+
+**The supercontinent Columbia (Nuna)** (1800 Ma)
+- Ted Nield, Supercontinent (2007)
+- [Wikipedia: Columbia (supercontinent)](https://en.wikipedia.org/wiki/Columbia_(supercontinent))
+
+**First certain eukaryotes** (1650 Ma)
+- Nick Lane, The Vital Question (2015)
+- [Wikipedia: Eukaryote](https://en.wikipedia.org/wiki/Eukaryote)
+
+**The supercontinent Rodinia forms** (1050 Ma)
+- Ted Nield, Supercontinent (2007)
+- [Wikipedia: Rodinia](https://it.wikipedia.org/wiki/Rodinia)
+- [Wikipedia: Supercontinent cycle](https://en.wikipedia.org/wiki/Supercontinent_cycle)
+
+**Rodinia breaks up: Panthalassa is born** (750 Ma)
+- [Wikipedia: Panthalassa](https://en.wikipedia.org/wiki/Panthalassa)
+- [Wikipedia: Rodinia](https://it.wikipedia.org/wiki/Rodinia)
+
+**Snowball Earth (Sturtian glaciation)** (717 Ma)
+- Gabrielle Walker, Snowball Earth (2003)
+- [Wikipedia: Snowball Earth](https://it.wikipedia.org/wiki/Terra_a_palla_di_neve)
+- [snowballearth.org](https://www.snowballearth.org/)
+- The Flinders Ranges (Australia), with tillites and the Ediacaran golden spike: https://en.wikipedia.org/wiki/Flinders_Ranges
+
+**The Ediacara biota** (570 Ma)
+- Andrew H. Knoll, Life on a Young Planet (2003)
+- [Wikipedia: Ediacaran biota](https://en.wikipedia.org/wiki/Ediacaran_biota)
+- [PBS Eons (YouTube)](https://www.youtube.com/@eons)
+- Mistaken Point (Newfoundland), a UNESCO site: https://en.wikipedia.org/wiki/Mistaken_Point_Ecological_Reserve
+- Ediacara Hills (Australia): https://en.wikipedia.org/wiki/Ediacara_Hills
+
+**Gondwana assembles** (550 Ma)
+- [Wikipedia: Gondwana](https://en.wikipedia.org/wiki/Gondwana)
+- [Wikipedia: Pan-African orogeny](https://en.wikipedia.org/wiki/Pan-African_orogeny)
+
+**Cambrian explosion** (530 Ma)
+- Stephen Jay Gould, Wonderful Life (1989) — it.: La vita meravigliosa
+- Simon Conway Morris, The Crucible of Creation (1998)
+- [Wikipedia: Esplosione cambriana](https://it.wikipedia.org/wiki/Esplosione_cambriana)
+- [PBS Eons (YouTube)](https://www.youtube.com/@eons)
+
+**Trilobites appear** (521 Ma)
+- Richard Fortey, Trilobite! Eyewitness to Evolution (2000)
+- [Wikipedia: Trilobita](https://it.wikipedia.org/wiki/Trilobita)
+
+**The Burgess Shale animals** (508 Ma)
+- Stephen Jay Gould, Wonderful Life (1989) — it.: La vita meravigliosa
+- [ROM: The Burgess Shale](https://burgess-shale.rom.on.ca/)
+- [PBS Eons (YouTube)](https://www.youtube.com/@eons)
+- Burgess Shale, Yoho National Park (guided hikes): https://en.wikipedia.org/wiki/Burgess_Shale
+- Royal Ontario Museum (Toronto): https://en.wikipedia.org/wiki/Royal_Ontario_Museum
+
+**First land plants** (470 Ma)
+- [Wikipedia: Evolution of plants](https://en.wikipedia.org/wiki/Evolutionary_history_of_plants)
+
+**End-Ordovician extinction** (445 Ma)
+- Peter Brannen, The Ends of the World (2017)
+- [Wikipedia: Late Ordovician mass extinction](https://en.wikipedia.org/wiki/Late_Ordovician_mass_extinction)
+
+**First vascular plants (Cooksonia)** (430 Ma)
+- [Wikipedia: Cooksonia](https://en.wikipedia.org/wiki/Cooksonia)
+
+**Caledonian orogeny: the Iapetus Ocean closes** (420 Ma)
+- Richard Fortey, Earth: An Intimate History (2004)
+- [Wikipedia: Caledonian orogeny](https://en.wikipedia.org/wiki/Caledonian_orogeny)
+- [Wikipedia: Iapetus Ocean](https://en.wikipedia.org/wiki/Iapetus_Ocean)
+- Siccar Point (Scotland), Hutton's unconformity: https://en.wikipedia.org/wiki/Siccar_Point
+
+**The first forests** (385 Ma)
+- [Wikipedia: Archaeopteris](https://en.wikipedia.org/wiki/Archaeopteris)
+
+**Tiktaalik: fish head for land** (375 Ma)
+- Neil Shubin, Your Inner Fish (2008) — it.: Il pesce che è in noi
+- [Wikipedia: Tiktaalik](https://en.wikipedia.org/wiki/Tiktaalik)
+- [PBS Eons (YouTube)](https://www.youtube.com/@eons)
+
+**Late Devonian extinction** (372 Ma)
+- Peter Brannen, The Ends of the World (2017)
+- [Wikipedia: Late Devonian extinction](https://en.wikipedia.org/wiki/Late_Devonian_extinction)
+
+**Variscan (Hercynian) orogeny** (330 Ma)
+- [Wikipedia: Variscan orogeny](https://en.wikipedia.org/wiki/Variscan_orogeny)
+- [Wikipedia: Appalachian Mountains](https://en.wikipedia.org/wiki/Appalachian_Mountains)
+- The granites of Gallura and the basement of Sardinia: https://en.wikipedia.org/wiki/Sardinia
+
+**First reptiles** (312 Ma)
+- [Wikipedia: Hylonomus](https://en.wikipedia.org/wiki/Hylonomus)
+- Joggins Fossil Cliffs (Canada), a UNESCO site: https://en.wikipedia.org/wiki/Joggins_Fossil_Cliffs
+
+**The great coal forests** (305 Ma)
+- [Wikipedia: Carboniferous rainforest collapse](https://en.wikipedia.org/wiki/Carboniferous_rainforest_collapse)
+
+**Pangaea forms** (300 Ma)
+- Ted Nield, Supercontinent (2007)
+- Alfred Wegener, Die Entstehung der Kontinente und Ozeane (1915) — it.: La formazione dei continenti e degli oceani
+- [Wikipedia: Pangea](https://it.wikipedia.org/wiki/Pangea)
+- [Wikipedia: Panthalassa](https://en.wikipedia.org/wiki/Panthalassa)
+
+**The Urals rise** (290 Ma)
+- [Wikipedia: Uralian orogeny](https://en.wikipedia.org/wiki/Uralian_orogeny)
+
+**The Neo-Tethys opens** (260 Ma)
+- [Wikipedia: Tethys Ocean](https://en.wikipedia.org/wiki/Tethys_Ocean)
+
+**The great end-Permian extinction** (252 Ma)
+- Michael J. Benton, When Life Nearly Died (2003)
+- Peter Brannen, The Ends of the World (2017)
+- [Wikipedia: Permian–Triassic extinction event](https://en.wikipedia.org/wiki/Permian%E2%80%93Triassic_extinction_event)
+- [PBS Eons (YouTube)](https://www.youtube.com/@eons)
+- The Permian–Triassic transition in the Bletterbach gorge (South Tyrol): https://en.wikipedia.org/wiki/Bletterbach
+
+**Carnian Pluvial Episode** (233 Ma)
+- [Wikipedia: Carnian pluvial episode](https://en.wikipedia.org/wiki/Carnian_pluvial_episode)
+- The Dolomites, a UNESCO site: https://en.wikipedia.org/wiki/Dolomites
+
+**First dinosaurs** (231 Ma)
+- Steve Brusatte, The Rise and Fall of the Dinosaurs (2018) — it.: Ascesa e caduta dei dinosauri
+- [Wikipedia: Dinosaur](https://en.wikipedia.org/wiki/Dinosaur)
+- [PBS Eons (YouTube)](https://www.youtube.com/@eons)
+- Ischigualasto Provincial Park (Argentina), a UNESCO site: https://en.wikipedia.org/wiki/Ischigualasto_Provincial_Park
+- MUSE – Science Museum, Trento: https://www.muse.it/
+
+**The rifting of Pangaea begins** (230 Ma)
+- [Wikipedia: Rift](https://en.wikipedia.org/wiki/Rift)
+- [Wikipedia: Newark Basin](https://en.wikipedia.org/wiki/Newark_Basin)
+
+**First mammaliaforms** (225 Ma)
+- Steve Brusatte, The Rise and Reign of the Mammals (2022)
+- [Wikipedia: Mammaliaformes](https://en.wikipedia.org/wiki/Mammaliaformes)
+
+**End-Triassic extinction** (201 Ma)
+- Peter Brannen, The Ends of the World (2017)
+- [Wikipedia: Triassic–Jurassic extinction event](https://en.wikipedia.org/wiki/Triassic%E2%80%93Jurassic_extinction_event)
+
+**The Atlantic Ocean opens** (180 Ma)
+- [Wikipedia: Mid-Atlantic Ridge](https://en.wikipedia.org/wiki/Mid-Atlantic_Ridge)
+- Þingvellir (Iceland), where the ridge is on land: https://en.wikipedia.org/wiki/%C3%9Eingvellir
+
+**The Ligurian-Piedmont Ocean opens** (170 Ma)
+- [Wikipedia: Piemont-Liguria Ocean](https://en.wikipedia.org/wiki/Piemont-Liguria_Ocean)
+- [Wikipedia: Ophiolite](https://en.wikipedia.org/wiki/Ophiolite)
+- Monviso, Jurassic oceanic crust raised to 3,841 m: https://en.wikipedia.org/wiki/Monviso
+- The ophiolites of Bracco and Val di Vara (Liguria): https://en.wikipedia.org/wiki/Ophiolite
+
+**Archaeopteryx** (150 Ma)
+- Pat Shipman, Taking Wing (1998)
+- [Wikipedia: Archaeopteryx](https://it.wikipedia.org/wiki/Archaeopteryx)
+- [PBS Eons (YouTube)](https://www.youtube.com/@eons)
+- Museum für Naturkunde (Berlin), with the Berlin specimen: https://en.wikipedia.org/wiki/Museum_f%C3%BCr_Naturkunde
+- Natural History Museum (London): https://en.wikipedia.org/wiki/Natural_History_Museum,_London
+
+**First flowering plants** (130 Ma)
+- [Wikipedia: Flowering plant](https://en.wikipedia.org/wiki/Flowering_plant)
+
+**The South Atlantic opens** (120 Ma)
+- [Wikipedia: Atlantic Ocean (geology)](https://en.wikipedia.org/wiki/Atlantic_Ocean)
+- [Wikipedia: Gondwana](https://en.wikipedia.org/wiki/Gondwana)
+
+**Oceanic Anoxic Event 2** (94 Ma)
+- [Wikipedia: Cenomanian-Turonian boundary event](https://en.wikipedia.org/wiki/Cenomanian-Turonian_boundary_event)
+- The Bonarelli Level in the Bottaccione Gorge and other sections of the Umbria-Marche Apennines: https://en.wikipedia.org/wiki/Gubbio
+
+**Laramide orogeny: the Rocky Mountains rise** (70 Ma)
+- John McPhee, Annals of the Former World (1998)
+- [Wikipedia: Laramide orogeny](https://en.wikipedia.org/wiki/Laramide_orogeny)
+
+**Tyrannosaurus rex** (68 Ma)
+- Steve Brusatte, The Rise and Fall of the Dinosaurs (2018) — it.: Ascesa e caduta dei dinosauri
+- [Wikipedia: Tyrannosaurus](https://en.wikipedia.org/wiki/Tyrannosaurus)
+- Field Museum (Chicago), with the skeleton of «Sue»: https://en.wikipedia.org/wiki/Field_Museum_of_Natural_History
+
+**The Deccan Traps eruptions** (66.3 Ma)
+- [Wikipedia: Deccan Traps](https://en.wikipedia.org/wiki/Deccan_Traps)
+
+**The Chicxulub asteroid: end of non-avian dinosaurs** (66 Ma)
+- Walter Alvarez, T. rex and the Crater of Doom (1997)
+- Alessandro Montanari, Christian Koeberl, Impact Stratigraphy: The Italian Record (2000)
+- [Wikipedia: Cretaceous–Paleogene extinction event](https://en.wikipedia.org/wiki/Cretaceous%E2%80%93Paleogene_extinction_event)
+- [Wikipedia: Chicxulub crater](https://en.wikipedia.org/wiki/Chicxulub_crater)
+- The K-Pg boundary in the Bottaccione Gorge, Gubbio (Umbria): https://en.wikipedia.org/wiki/Gubbio
+
+**Paleocene–Eocene Thermal Maximum (PETM)** (56 Ma)
+- Thomas Halliday, Otherlands (2022)
+- [Wikipedia: PETM](https://en.wikipedia.org/wiki/Paleocene%E2%80%93Eocene_Thermal_Maximum)
+- [PBS Eons (YouTube)](https://www.youtube.com/@eons)
+- The Zumaia cliffs (Basque Country), where the PETM is a clay bed: https://en.wikipedia.org/wiki/Zumaia
+
+**The first whales** (50 Ma)
+- Carl Zimmer, At the Water's Edge (1998)
+- [Wikipedia: Evolution of cetaceans](https://en.wikipedia.org/wiki/Evolution_of_cetaceans)
+- Wadi Al-Hitan, the «Valley of the Whales» (Egypt), a UNESCO site: https://en.wikipedia.org/wiki/Wadi_Al-Hitan
+
+**India hits Asia: the Himalaya is born** (50 Ma)
+- Richard Fortey, Earth: An Intimate History (2004)
+- [Wikipedia: Himalayas (geology)](https://en.wikipedia.org/wiki/Geology_of_the_Himalayas)
+- [Wikipedia: Mount Everest](https://en.wikipedia.org/wiki/Mount_Everest)
+
+**The collision that raises the Alps** (35 Ma)
+- [Wikipedia: Alpine orogeny](https://en.wikipedia.org/wiki/Alpine_orogeny)
+- [Wikipedia: Geology of the Alps](https://en.wikipedia.org/wiki/Geology_of_the_Alps)
+- The Matterhorn (Aosta Valley and Switzerland): https://en.wikipedia.org/wiki/Matterhorn
+- Monviso (Piedmont): https://en.wikipedia.org/wiki/Monviso
+
+**Permanent ice in Antarctica** (34 Ma)
+- [Wikipedia: Eocene–Oligocene extinction event](https://en.wikipedia.org/wiki/Eocene%E2%80%93Oligocene_extinction_event)
+
+**The East African Rift and the Red Sea open** (30 Ma)
+- [Wikipedia: East African Rift](https://en.wikipedia.org/wiki/East_African_Rift)
+- [Wikipedia: Afar Triangle](https://en.wikipedia.org/wiki/Afar_Triangle)
+
+**The Apennines are born** (23 Ma)
+- [Wikipedia: Apennine Mountains](https://en.wikipedia.org/wiki/Apennine_Mountains)
+- Gran Sasso and Majella (Abruzzo): https://en.wikipedia.org/wiki/Gran_Sasso_d%27Italia
+
+**Corsica and Sardinia rotate: the Ligurian Sea opens** (18 Ma)
+- [Wikipedia: Ligurian Sea](https://en.wikipedia.org/wiki/Ligurian_Sea)
+
+**The Tyrrhenian Sea opens** (8 Ma)
+- [Wikipedia: Tyrrhenian Sea](https://en.wikipedia.org/wiki/Tyrrhenian_Sea)
+- The Aeolian Islands, a UNESCO site: https://en.wikipedia.org/wiki/Aeolian_Islands
+
+**The Mediterranean dries out (Messinian crisis)** (5.97 Ma)
+- Kenneth J. Hsü, The Mediterranean Was a Desert (1983)
+- [Wikipedia: Crisi di salinità del Messiniano](https://it.wikipedia.org/wiki/Crisi_di_salinit%C3%A0_del_Messiniano)
+- Vena del Gesso Romagnola park (Emilia-Romagna): https://it.wikipedia.org/wiki/Parco_regionale_della_Vena_del_Gesso_Romagnola
+- The rock-salt mines and gypsum of Sicily: https://it.wikipedia.org/wiki/Serie_gessoso-solfifera
+
+**The Zanclean flood refills the Mediterranean** (5.33 Ma)
+- [Wikipedia: Zanclean flood](https://en.wikipedia.org/wiki/Zanclean_flood)
+- Eraclea Minoa and the Scala dei Turchi (Sicily): https://en.wikipedia.org/wiki/Scala_dei_Turchi
+
+**Lucy (Australopithecus afarensis)** (3.2 Ma)
+- Donald Johanson, Maitland Edey, Lucy: The Beginnings of Humankind (1981)
+- [Wikipedia: Lucy (Australopithecus)](https://en.wikipedia.org/wiki/Lucy_(Australopithecus))
+- National Museum of Ethiopia (Addis Ababa): https://en.wikipedia.org/wiki/National_Museum_of_Ethiopia
+
+**The Isthmus of Panama closes** (2.8 Ma)
+- [Wikipedia: Isthmus of Panama](https://en.wikipedia.org/wiki/Isthmus_of_Panama)
+- [Wikipedia: Great American Interchange](https://en.wikipedia.org/wiki/Great_American_Interchange)
+
+**First Oldowan tools** (2.6 Ma)
+- [Wikipedia: Oldowan](https://en.wikipedia.org/wiki/Oldowan)
+- Olduvai Gorge (Tanzania): https://en.wikipedia.org/wiki/Olduvai_Gorge
+
+**Last magnetic field reversal** (0.773 Ma)
+- [Wikipedia: Brunhes–Matuyama reversal](https://en.wikipedia.org/wiki/Brunhes%E2%80%93Matuyama_reversal)
+- [Wikipedia: Geomagnetic reversal](https://en.wikipedia.org/wiki/Geomagnetic_reversal)
+
+**Homo sapiens** (0.3 Ma)
+- Telmo Pievani, Homo sapiens e altre catastrofi (2018)
+- [Wikipedia: Jebel Irhoud](https://en.wikipedia.org/wiki/Jebel_Irhoud)
+- [Wikipedia: Homo sapiens](https://en.wikipedia.org/wiki/Homo_sapiens)
+
+**End of the ice age and first farming** (0.0117 Ma)
+- Jared Diamond, Guns, Germs, and Steel (1997) — it.: Armi, acciaio e malattie
+- Richard B. Alley, The Two-Mile Time Machine (2000)
+- [Wikipedia: Neolithic Revolution](https://en.wikipedia.org/wiki/Neolithic_Revolution)
+- Göbekli Tepe (Turkey), a UNESCO site: https://en.wikipedia.org/wiki/G%C3%B6bekli_Tepe
+
+**The 4,200-year-ago drought** (0.0042 Ma)
+- Brian Fagan, The Long Summer (2004)
+- [Wikipedia: 4.2-kiloyear event](https://en.wikipedia.org/wiki/4.2-kiloyear_event)
+
+
 ## Map / Mappa
 
 - Natural Earth, 1:50m Cultural and Physical Vectors — public domain — https://www.naturalearthdata.com

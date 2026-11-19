@@ -5,7 +5,7 @@ App.col = (() => {
   let ctx, W = 0, H = 0, dpr = 1, dirty = true;
   const PAD_T = 46, PAD_B = 74;                      // room for the breadcrumb and the dock
   const COLW = [.45, .7, .9, 2, .55, 2, 2.6];        // S E R P B C A
-  let colX = [], colR = 0, tickX = 0, evX = 0, evW = 0;
+  let colX = [], colR = 0, tickX = 0, evX = 0, evW = 0, sx0 = 0, sx1 = 0;
   let sel = null, hover = null, marks = [], flash = null;
   const view = { chart: null, linear: null };
   let anim = null, trans = null;               // fly animation, scale transition
@@ -54,18 +54,27 @@ App.col = (() => {
   }
 
   /* ---------- layout ---------- */
-  function layout() {
+  let T = null, side = 0;                       // target layout (animated), room taken by panel/helper
+  function layout(instant) {
     const r = vp.getBoundingClientRect(); W = r.width; H = r.height; dpr = devicePixelRatio || 1;
     cv.width = Math.round(W * dpr); cv.height = Math.round(H * dpr);
-    const narrow = W < 560, tickW = narrow ? 56 : 74, avail = W >= 1100 ? W - 460 : W;   // keep room for the side panel
-    evW = narrow ? 30 : clamp(avail - 24 - tickW - 700, 0, 250);
-    if (!narrow && evW < 150) evW = Math.min(150, Math.max(0, avail - 24 - tickW - 380));
-    const wc = Math.min(700, avail - 16 - tickW - evW - 8);
-    const sum = COLW.reduce((a, b) => a + b, 0); let x = narrow ? 8 : 12; colX = [];
-    COLW.forEach(w => { colX.push(x); x += wc * w / sum; }); colX.push(x); colR = x;
-    tickX = colR; evX = colR + tickW;
+    const narrow = W < 560, tickW = narrow ? 56 : 78, avail = W >= 1000 ? W - side : W;
+    const ev = narrow ? 30 : avail > 760 ? clamp(avail * .24, 130, 270) : Math.min(120, Math.max(0, avail - 24 - tickW - 380));
+    const wc = Math.min(820, avail - (narrow ? 16 : 40) - tickW - ev);
+    const x0 = narrow ? 8 : Math.max(16, (avail - wc - tickW - ev) / 2);
+    const sw = App.showSchool ? Math.max(narrow ? 26 : 40, wc * .11) : 0, gap = App.showSchool ? 5 : 0;
+    const sum = COLW.reduce((a, b) => a + b, 0); let x = x0 + sw + gap; const cx = [];
+    COLW.forEach(w => { cx.push(x); x += (wc - sw - gap) * w / sum; }); cx.push(x);
+    T = { colX: cx, colR: x, tickX: x, evX: x + tickW, evW: ev, sx0: x0, sx1: x0 + sw };
+    if (instant || !colX.length) { colX = [...cx]; colR = T.colR; tickX = T.tickX; evX = T.evX; evW = T.evW; sx0 = T.sx0; sx1 = T.sx1; }
     ['chart', 'linear'].forEach(sc => { if (!view[sc]) view[sc] = fitView(sc); else clampView(view[sc], sc); });
     dirty = true;
+  }
+  function stepLayout() {          // glide towards the target layout
+    if (!T) return false; let moving = false;
+    const st = (a, b) => { const d = b - a; if (Math.abs(d) > .4) { moving = true; return a + d * .2; } return b; };
+    colX = colX.map((v, i) => st(v, T.colX[i])); colR = st(colR, T.colR); tickX = st(tickX, T.tickX); evX = st(evX, T.evX); evW = st(evW, T.evW); sx0 = st(sx0, T.sx0); sx1 = st(sx1, T.sx1);
+    return moving;
   }
   function span(u) {
     const c0 = u.p ? rankIdx(u.r) : 0, c1 = u.kids.length ? rankIdx(u.kids[0].r) : 7;
@@ -103,6 +112,7 @@ App.col = (() => {
       const top = sy(u.b), bot = sy(u.a); if (bot < 0 || top > H || bot - top < 9) continue;
       const [x0, x1] = span(u); label(u, x0, x1, top, bot);
     }
+    if (sx1 - sx0 > 2) school(C);
     // marks (games)
     for (const m of marks) {
       const y = sy(m.age); if (y < -10 || y > H + 10) continue;
@@ -111,7 +121,7 @@ App.col = (() => {
       if (m.label) { ctx.font = `700 12px ${css('--sans')}`; ctx.textAlign = 'left'; ctx.textBaseline = 'middle'; badge(m.label, colX[0] + 6, y, m.color); }
     }
     // hover / selection
-    const outline = (u, col, w) => { if (!u) return; const top = sy(u.b), bot = sy(u.a), [x0, x1] = span(u); ctx.strokeStyle = col; ctx.lineWidth = w; ctx.strokeRect(x0 + w / 2, top + w / 2, x1 - x0 - w, Math.max(bot - top - w, 1)); };
+    const outline = (u, col, w) => { if (!u || !u.r) return; const top = sy(u.b), bot = sy(u.a), [x0, x1] = span(u); ctx.strokeStyle = col; ctx.lineWidth = w; ctx.strokeRect(x0 + w / 2, top + w / 2, x1 - x0 - w, Math.max(bot - top - w, 1)); };
     if (hover && hover !== sel) outline(hover, C.text, 1.5);
     if (sel) { ctx.save(); ctx.shadowColor = C.accent; ctx.shadowBlur = 12; outline(sel, C.accent, 3); ctx.restore(); }
     if (flash) { const a = 1 - (performance.now() - flash.t0) / 900; if (a > 0) { ctx.globalAlpha = a; outline(flash.u, C.accent, 4); ctx.globalAlpha = 1; dirty = true; } else flash = null; }
@@ -151,6 +161,21 @@ App.col = (() => {
     if (w >= 34 && visBot - visTop >= s + 2) {
       let n = name; if (ctx.measureText(n).width + 8 > w) { while (n.length > 2 && ctx.measureText(n + '…').width + 8 > w) n = n.slice(0, -1); n += '…'; }
       ctx.globalAlpha = .9; ctx.fillText(n, (x0 + x1) / 2, clamp((top + bot) / 2, visTop + s / 2 + 1, visBot - s / 2 - 1)); ctx.globalAlpha = 1;
+    }
+  }
+  function school(C) {            // the old school eras, drawn as a separate, dashed column
+    const sans = css('--sans');
+    for (const u of App.school) {
+      const top = sy(u.b), bot = sy(u.a); if (bot < -2 || top > H + 2) continue;
+      ctx.fillStyle = u.c; ctx.globalAlpha = .85; ctx.fillRect(sx0, top, sx1 - sx0, Math.max(bot - top, .7)); ctx.globalAlpha = 1;
+      ctx.setLineDash([4, 3]); ctx.strokeStyle = 'rgba(0,0,0,.45)'; ctx.lineWidth = 1; ctx.strokeRect(sx0 + .5, top + .5, sx1 - sx0 - 1, Math.max(bot - top - 1, .5)); ctx.setLineDash([]);
+      if (u === sel) { ctx.strokeStyle = C.accent; ctx.lineWidth = 3; ctx.strokeRect(sx0 + 1.5, top + 1.5, sx1 - sx0 - 3, Math.max(bot - top - 3, 1)); }
+      const name = tx(u.n), visTop = Math.max(top, PAD_T - 6), visBot = Math.min(bot, H - PAD_B + 8);
+      ctx.font = `700 12px ${sans}`; const tw = ctx.measureText(name).width;
+      if (visBot - visTop >= tw + 12) {
+        ctx.save(); ctx.translate((sx0 + sx1) / 2, clamp((top + bot) / 2, visTop + tw / 2 + 6, visBot - tw / 2 - 6)); ctx.rotate(-Math.PI / 2);
+        ctx.fillStyle = '#1a1a1a'; ctx.textAlign = 'center'; ctx.textBaseline = 'middle'; ctx.fillText(name, 0, 0); ctx.restore();
+      }
     }
   }
   function spike(x, y, col) {        // a golden nail pointing at the boundary
@@ -224,6 +249,7 @@ App.col = (() => {
       if (p >= 1) anim = null; dirty = true;
     }
     if (trans) { trans.t = clamp((now - trans.t0) / 700, 0, 1); if (trans.t >= 1) trans = null; dirty = true; }
+    if (stepLayout()) dirty = true;
     if (dirty) { draw(); crumbs(); }
     requestAnimationFrame(frame);
   }
@@ -254,6 +280,7 @@ App.col = (() => {
 
   /* ---------- hit testing ---------- */
   function hit(x, y) {
+    if (sx1 - sx0 > 2 && x >= sx0 && x <= sx1) { const age = ageAtScreen(y); return App.school.find(s => age <= s.a && age >= s.b) || null; }
     if (x < colX[0] || x > colR) return null;
     const age = ageAtScreen(y); if (age < 0 || age > 4567) return null;
     let c = 0; while (c < 7 && x >= colX[c + 1]) c++;
@@ -304,19 +331,21 @@ App.col = (() => {
       if (e.key === '+' || e.key === '=') zoomBy(1.5); if (e.key === '-') zoomBy(1 / 1.5); if (e.key === '0') fit();
       if (e.key === 'ArrowUp' || e.key === 'ArrowDown') { const v = V(); v.y0 += (e.key === 'ArrowUp' ? -1 : 1) * viewH() * .15 / v.k; clampView(v); dirty = true; e.preventDefault(); }
     });
-    new ResizeObserver(layout).observe(vp);
+    new ResizeObserver(() => layout(true)).observe(vp);
   }
   function click(x, y) {
     const ev = hitEvent(x, y);
-    if (ev && !App.col.onPick) { toast(`${ev.e.e}  ${tx(ev.e.n)} · ${fmtYearsAgo(ev.e.a)}`, 3200); return; }
+    if (ev && !App.col.onPick) { App.openEvent(ev.e); return; }
     if (App.col.onPick) { const age = ageAtScreen(y); if (x >= colX[0] && x <= colR && age >= 0 && age <= 4567) App.col.onPick(age, hit(x, y)); return; }
     const u = hit(x, y); if (!u) return;
+    if (u.id[0] === 's' && App.school.includes(u)) { App.openSchool(u); return; }
     App.select(u, true);
   }
 
-  function init() { buildScales(); layout(); initInput(); requestAnimationFrame(frame); }
+  function init() { buildScales(); layout(true); initInput(); requestAnimationFrame(frame); }
   return {
     init, flyTo, flyToAge, fit, setScale, layout,
+    setSide(px) { if (px !== side) { side = px; layout(); } },
     redraw() { dirty = true; lastCrumb = ''; },
     select(u, fly) { sel = u; if (u) { flash = { u, t0: performance.now() }; if (fly) flyTo(u); } dirty = true; },
     setMarks(m) { marks = m; dirty = true; },

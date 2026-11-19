@@ -34,10 +34,20 @@ The reference of every golden spike, unit by unit, is listed in [`SOURCES.md`](S
 Redistributed as TopoJSON by **world-atlas** 2 (© Mike Bostock, ISC License, https://github.com/topojson/world-atlas).
 Changes made / Modifiche: simplified with topojson-simplify and projected to an equirectangular SVG path by `tools/mkmap.mjs`.
 
-## 4. Fonts / Caratteri
+## 4. Photos / Foto (`img/`)
+
+Photos come only from **Wikimedia Commons** and are accepted only with a free licence that allows reuse with attribution: **CC0, public domain, CC BY, CC BY-SA** (any version). Files under NC or ND licences, «fair use» files and files without a named author are rejected automatically by `tools/fetch_images.py`. Every photo keeps **its own licence**; the app shows author, licence (with link) and source page under each photo, and the full list, file by file, is in [`img/CREDITS.md`](img/CREDITS.md). Changes made: resized to 1024 px wide by Wikimedia's thumbnail service; no other edits. CC BY-SA photos are only displayed, not modified, so their share-alike clause does not extend to Strata's code or texts.
+
+Le foto vengono solo da **Wikimedia Commons** e sono accettate solo con una licenza libera che permette il riuso citando l'autore: **CC0, pubblico dominio, CC BY, CC BY-SA**. I file NC o ND, quelli «fair use» e quelli senza autore sono scartati automaticamente. Ogni foto mantiene **la propria licenza**; l'app mostra sotto ogni foto autore, licenza (con link) e pagina di provenienza, e l'elenco completo è in [`img/CREDITS.md`](img/CREDITS.md).
+
+## 5. Books and links in the event cards / Libri e link nelle schede degli eventi
+
+Titles, authors and links are cited as references only; no text from them is reproduced. The full list is in [`SOURCES.md`](SOURCES.md).
+
+## 6. Fonts / Caratteri
 
 **Inter** (© The Inter Project Authors) and **JetBrains Mono** (© JetBrains), both under the [SIL Open Font License 1.1](https://openfontlicense.org), loaded from Google Fonts.
 
-## 5. Emoji
+## 7. Emoji
 
 The event icons are Unicode emoji drawn by the operating system's own font; no emoji images are shipped with Strata.
