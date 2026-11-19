@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="it" data-theme="dark">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<meta name="description" content="Strata — the geologic time scale to explore: eons, periods, stages, golden spikes and games. / La scala dei tempi geologici da esplorare: eoni, periodi, piani, chiodi d'oro e giochi.">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 32 32%22%3E%3Crect width=%2232%22 height=%2232%22 rx=%228%22 fill=%22%23F2F91D%22/%3E%3Crect y=%2210%22 width=%2232%22 height=%228%22 fill=%22%2367C5CA%22/%3E%3Crect y=%2218%22 width=%2232%22 height=%228%22 fill=%22%2399C08D%22/%3E%3Crect y=%2226%22 width=%2232%22 height=%226%22 fill=%22%23F74370%22/%3E%3C/svg%3E">
+<title>Strata</title>
+<meta property="og:type" content="website">
+<meta property="og:title" content="Strata — la scala del tempo geologico / the geologic time scale">
+<meta property="og:description" content="Eoni, ere, periodi e piani nei colori ufficiali ICS, i chiodi d'oro di tutto il mondo e quattro giochi. In italiano e in inglese.">
+<meta property="og:url" content="https://simmonsstummer.github.io/strata/">
+<meta property="og:image" content="https://simmonsstummer.github.io/strata/docs/og.jpg">
+<meta property="og:image:width" content="1200"><meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="theme-color" content="#0b0c0f">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header class="top">
+  <div class="brand"><span class="brand-mark" aria-hidden="true"><i style="background:#F9F97F"></i><i style="background:#34B2C9"></i><i style="background:#67A599"></i><i style="background:#F74370"></i></span><span class="brand-name">Strata<span class="brand-sub" data-i18n="brandSub"></span></span></div>
+  <nav class="views" role="tablist">
+    <button class="view-btn active" data-view="column" data-i18n="nav.column"></button>
+    <button class="view-btn" data-view="map" data-i18n="nav.map"></button>
+    <button class="view-btn" data-view="play" data-i18n="nav.play"></button>
+  </nav>
+  <div class="search">
+    <input id="search" type="search" data-i18n-ph="search.ph" autocomplete="off" spellcheck="false">
+    <div id="search-results" class="search-results"></div>
+  </div>
+  <button id="lang-btn" class="icon-btn lang-btn" data-i18n-title="lang.title">EN</button>
+  <button id="theme-btn" class="icon-btn" data-i18n-title="theme.title">◐</button>
+</header>
+
+<main>
+  <!-- COLUMN -->
+  <section id="view-column" class="view active">
+    <div id="col-vp" class="viewport"><canvas id="col-canvas"></canvas></div>
+    <nav id="crumbs" class="crumbs"></nav>
+    <div class="dock">
+      <div class="dock-row">
+        <div class="seg" id="scale-seg">
+          <button data-scale="chart" data-i18n="scale.chart"></button>
+          <button data-scale="linear" data-i18n="scale.linear"></button>
+        </div>
+        <div class="seg" id="names-seg">
+          <button data-names="rock" data-i18n="names.rock"></button>
+          <button data-names="time" data-i18n="names.time"></button>
+        </div>
+        <button id="events-btn" class="icon-btn small" data-i18n-title="events.toggle">✦</button>
+        <button id="help-btn" class="icon-btn small help-btn" data-i18n-title="help.toggle">?</button>
+      </div>
+    </div>
+    <div class="zoom-ctl">
+      <button class="icon-btn" data-zoom="in" data-i18n-title="zoom.in">+</button>
+      <button class="icon-btn" data-zoom="out" data-i18n-title="zoom.out">−</button>
+      <button class="icon-btn" data-zoom="fit" data-i18n-title="zoom.fit">⤢</button>
+    </div>
+    <div id="game-bar" class="game-bar" hidden></div>
+    <aside id="helper" class="helper" hidden></aside>
+  </section>
+
+  <!-- MAP -->
+  <section id="view-map" class="view">
+    <div id="map-vp" class="viewport map-vp"><svg id="map-svg" xmlns="http://www.w3.org/2000/svg"></svg></div>
+    <div class="dock">
+      <div class="dock-row">
+        <div id="map-legend" class="legend"></div>
+      </div>
+      <div id="map-stat" class="map-stat"></div>
+    </div>
+    <div class="zoom-ctl">
+      <button class="icon-btn" data-mzoom="in" data-i18n-title="zoom.in">+</button>
+      <button class="icon-btn" data-mzoom="out" data-i18n-title="zoom.out">−</button>
+      <button class="icon-btn" data-mzoom="fit" data-i18n-title="zoom.fit">⤢</button>
+    </div>
+    <div id="map-game-bar" class="game-bar" hidden></div>
+    <div id="map-tip" class="map-tip" hidden></div>
+  </section>
+
+  <!-- PLAY -->
+  <section id="view-play" class="view scroll">
+    <div class="play-wrap" id="play-root"></div>
+  </section>
+
+  <!-- DETAIL PANEL -->
+  <aside id="panel" class="panel" aria-hidden="true">
+    <div class="panel-grip" id="panel-grip"><span></span></div>
+    <div class="panel-head">
+      <div id="panel-title" class="panel-title"></div>
+      <button id="panel-close" class="icon-btn small" data-i18n-title="panel.close">✕</button>
+    </div>
+    <nav id="panel-tabs" class="panel-tabs"></nav>
+    <div id="panel-body" class="panel-body"></div>
+  </aside>
+</main>
+
+<footer id="foot" class="foot"></footer>
+
+<div id="toast" class="toast"></div>
+
+<script src="core.js"></script>
+<script src="i18n.js"></script>
+<script src="world.js"></script>
+<script src="column.js"></script>
+<script src="panel.js"></script>
+<script src="map.js"></script>
+<script src="games.js"></script>
+<script src="main.js"></script>
+</body>
+</html>

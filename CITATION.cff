@@ -1,0 +1,45 @@
+cff-version: 1.2.0
+message: "If you use Strata, please cite it as below, together with the ICS chart it is built on."
+title: "Strata — the geologic time scale to explore"
+type: software
+authors:
+  - family-names: Pompei
+    given-names: Simone
+    alias: Simmonsstummer
+repository-code: "https://github.com/Simmonsstummer/strata"
+url: "https://simmonsstummer.github.io/strata/"
+license: MIT
+version: "1.0.0"
+date-released: "2026-11-19"
+keywords:
+  - geology
+  - stratigraphy
+  - chronostratigraphy
+  - geologic time scale
+  - GSSP
+  - education
+references:
+  - type: data
+    title: "International Chronostratigraphic Chart v2026/06"
+    authors:
+      - name: "International Commission on Stratigraphy"
+    url: "https://stratigraphy.org/chart"
+    repository: "https://github.com/i-c-stratigraphy/chart"
+    license: CC-BY-4.0
+  - type: article
+    title: "The ICS International Chronostratigraphic Chart this decade"
+    authors:
+      - family-names: Cohen
+        given-names: K.M.
+      - family-names: Harper
+        given-names: D.
+      - family-names: Gibbard
+        given-names: P.
+      - family-names: Car
+        given-names: N.
+    journal: Episodes
+    volume: 48
+    start: 105
+    end: 115
+    year: 2025
+    doi: "10.18814/epiiugs/2025/025001"
